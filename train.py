@@ -35,25 +35,21 @@ from .trainers import (
     RegressionTask,
     SemanticSegmentationTask,
 )
-from .trainers.chesapeake import ChesapeakeCVPRSegmentationTask
-from .trainers.landcoverai import LandCoverAISegmentationTask
-from .trainers.naipchesapeake import NAIPChesapeakeSegmentationTask
-from .trainers.resisc45 import RESISC45ClassificationTask
 
 TASK_TO_MODULES_MAPPING: Dict[
     str, Tuple[Type[pl.LightningModule], Type[pl.LightningDataModule]]
 ] = {
     "bigearthnet": (MultiLabelClassificationTask, BigEarthNetDataModule),
     "byol": (BYOLTask, ChesapeakeCVPRDataModule),
-    "chesapeake_cvpr": (ChesapeakeCVPRSegmentationTask, ChesapeakeCVPRDataModule),
+    "chesapeake_cvpr": (SemanticSegmentationTask, ChesapeakeCVPRDataModule),
     "cowc_counting": (RegressionTask, COWCCountingDataModule),
     "cyclone": (RegressionTask, CycloneDataModule),
     "eurosat": (ClassificationTask, EuroSATDataModule),
     "etci2021": (SemanticSegmentationTask, ETCI2021DataModule),
-    "landcoverai": (LandCoverAISegmentationTask, LandCoverAIDataModule),
-    "naipchesapeake": (NAIPChesapeakeSegmentationTask, NAIPChesapeakeDataModule),
+    "landcoverai": (SemanticSegmentationTask, LandCoverAIDataModule),
+    "naipchesapeake": (SemanticSegmentationTask, NAIPChesapeakeDataModule),
     "oscd": (SemanticSegmentationTask, OSCDDataModule),
-    "resisc45": (RESISC45ClassificationTask, RESISC45DataModule),
+    "resisc45": (ClassificationTask, RESISC45DataModule),
     "sen12ms": (SemanticSegmentationTask, SEN12MSDataModule),
     "so2sat": (ClassificationTask, So2SatDataModule),
     "ucmerced": (ClassificationTask, UCMercedDataModule),
